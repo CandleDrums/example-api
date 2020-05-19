@@ -1,7 +1,7 @@
 /**
  * @Project example-api
  * @Package com.cds.api.example.query
- * @Class ExampleQueryService.java
+ * @Class TableQueryService.java
  * @Date [date]
  * @Copyright (c) 2019 CandleDrums.com All Right Reserved.
  */
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cds.api.example.constant.APIConstants;
-import com.cds.api.example.model.ExampleVO;
+import com.cds.api.example.model.TableVO;
 import com.cds.base.api.service.GeneralQueryService;
 import com.cds.base.common.page.Page;
 import com.cds.base.common.page.PageResult;
@@ -34,29 +34,29 @@ import io.swagger.annotations.ApiOperation;
  */
 @Api(value = "[name]查询服务", tags = {"[name]查询"})
 @FeignClient(name = APIConstants.APP_NAME)
-public interface ExampleQueryService extends GeneralQueryService<ExampleVO> {
+public interface TableQueryService extends GeneralQueryService<TableVO> {
 
     // 前缀
-    static final String PREFIX = BASE_PREFIX + "/ExampleQueryService";
+    static final String PREFIX = BASE_PREFIX + "/TableQueryService";
 
     @Override
     @ApiOperation(value = "是否存在")
     @PostMapping(PREFIX + "/contains")
-    ResponseResult<Boolean> contains(@RequestBody @NotNull ExampleVO example);
+    ResponseResult<Boolean> contains(@RequestBody @NotNull TableVO example);
 
     @Override
     @ApiOperation(value = "详情")
     @PostMapping(PREFIX + "/detail")
-    ResponseResult<ExampleVO> detail(@RequestParam(value = "num", required = true) String num);
+    ResponseResult<TableVO> detail(@RequestParam(value = "num", required = true) String num);
 
     @Override
     @ApiOperation(value = "指定条件查询")
     @PostMapping(PREFIX + "/queryAll")
-    ResponseResult<List<ExampleVO>> queryAll(@RequestBody @NotNull ExampleVO example);
+    ResponseResult<List<TableVO>> queryAll(@RequestBody @NotNull TableVO example);
 
     @Override
     @ApiOperation(value = "分页查询")
     @PostMapping(PREFIX + "/queryPagingList")
-    ResponseResult<PageResult<ExampleVO>> queryPagingList(@RequestBody @NotNull Page<ExampleVO> examplePage);
+    ResponseResult<PageResult<TableVO>> queryPagingList(@RequestBody @NotNull Page<TableVO> examplePage);
 
 }
