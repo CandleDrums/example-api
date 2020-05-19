@@ -8,7 +8,6 @@
 package com.cds.api.example.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import lombok.Data;
 
@@ -21,12 +20,5 @@ import lombok.Data;
 @Data
 public class TableVO implements Serializable {
     private static final long serialVersionUID = 1L;
-
-    // num
-    private String num;
-    // 创建时间
-    private Date createDate;
-    // 更新时间
-    private Date updateDate;
 
 }
