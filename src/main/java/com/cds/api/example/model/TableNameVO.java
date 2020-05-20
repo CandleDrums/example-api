@@ -1,7 +1,7 @@
 /**
  * @Project example-server-api
  * @Package com.cds.api.example.model
- * @Class TableVO.java
+ * @Class TableNameVO.java
  * @Date [date]
  * @Copyright (c) 2019 CandleDrums.com All Right Reserved.
  */
@@ -18,7 +18,7 @@ import lombok.Data;
  * @Date [date]
  */
 @Data
-public class TableVO implements Serializable {
+public class TableNameVO implements Serializable {
     private static final long serialVersionUID = 1L;
 
 }

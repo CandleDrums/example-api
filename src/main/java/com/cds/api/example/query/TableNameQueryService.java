@@ -1,7 +1,7 @@
 /**
  * @Project example-api
  * @Package com.cds.api.example.query
- * @Class TableQueryService.java
+ * @Class TableNameQueryService.java
  * @Date [date]
  * @Copyright (c) 2019 CandleDrums.com All Right Reserved.
  */
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cds.api.example.constant.APIConstants;
-import com.cds.api.example.model.TableVO;
+import com.cds.api.example.model.TableNameVO;
 import com.cds.base.api.service.GeneralQueryService;
 import com.cds.base.common.page.Page;
 import com.cds.base.common.page.PageResult;
@@ -34,29 +34,29 @@ import io.swagger.annotations.ApiOperation;
  */
 @Api(value = "[name]查询服务", tags = {"[name]查询"})
 @FeignClient(name = APIConstants.APP_NAME)
-public interface TableQueryService extends GeneralQueryService<TableVO> {
+public interface TableNameQueryService extends GeneralQueryService<TableNameVO> {
 
     // 前缀
-    static final String PREFIX = BASE_PREFIX + "/TableQueryService";
+    static final String PREFIX = BASE_PREFIX + "/TableNameQueryService";
 
     @Override
     @ApiOperation(value = "是否存在")
     @PostMapping(PREFIX + "/contains")
-    ResponseResult<Boolean> contains(@RequestBody @NotNull TableVO example);
+    ResponseResult<Boolean> contains(@RequestBody @NotNull TableNameVO example);
 
     @Override
     @ApiOperation(value = "详情")
     @PostMapping(PREFIX + "/detail")
-    ResponseResult<TableVO> detail(@RequestParam(value = "num", required = true) String num);
+    ResponseResult<TableNameVO> detail(@RequestParam(value = "num", required = true) String num);
 
     @Override
     @ApiOperation(value = "指定条件查询")
     @PostMapping(PREFIX + "/queryAll")
-    ResponseResult<List<TableVO>> queryAll(@RequestBody @NotNull TableVO example);
+    ResponseResult<List<TableNameVO>> queryAll(@RequestBody @NotNull TableNameVO example);
 
     @Override
     @ApiOperation(value = "分页查询")
     @PostMapping(PREFIX + "/queryPagingList")
-    ResponseResult<PageResult<TableVO>> queryPagingList(@RequestBody @NotNull Page<TableVO> examplePage);
+    ResponseResult<PageResult<TableNameVO>> queryPagingList(@RequestBody @NotNull Page<TableNameVO> examplePage);
 
 }
