@@ -14,7 +14,7 @@ import lombok.Data;
 /**
  * @Description [name]VO
  * @Notes 未填写备注
- * @author liming
+ * @author [author]
  * @Date [date]
  */
 @Data
