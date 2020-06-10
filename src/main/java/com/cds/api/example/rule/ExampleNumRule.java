@@ -3,7 +3,7 @@
  * @Package com.cds.api.example.rule
  * @Class ExampleNumRule.java
  * @Date Jun 8, 2020 4:19:53 PM
- * @Copyright (c) 2020 CandleDrums.com All Right Reserved.
+ * @Copyright (c) 2020 CandleDrumS.com All Right Reserved
  */
 package com.cds.api.example.rule;
 

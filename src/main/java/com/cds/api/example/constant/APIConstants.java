@@ -3,7 +3,7 @@
  * @package com.cds.api.example.constant
  * @Class APIConstants.java
  * @Date [date]
- * @Copyright (c) 2019 CandleDrums.com All Right Reserved.
+ * @Copyright (c) 2019 CandleDrumS.com All Right Reserved
  */
 package com.cds.api.example.constant;
 
