@@ -3,7 +3,7 @@
  * @Package com.cds.api.example.model
  * @Class TableNameVO.java
  * @Date [date]
- * @Copyright (c) 2019 CandleDrumS.com All Right Reserved.
+ * @Copyright [copyright]
  */
 package com.cds.api.example.model;
 
