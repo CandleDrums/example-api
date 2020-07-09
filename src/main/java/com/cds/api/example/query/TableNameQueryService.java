@@ -39,7 +39,7 @@ import io.swagger.annotations.ApiResponses;
 public interface TableNameQueryService extends GeneralQueryService<TableNameVO> {
 
     // 前缀
-    static final String PREFIX = BASE_PREFIX + "/TableNameQueryService";
+    static String PREFIX = BASE_PREFIX + "/TableNameQueryService";
 
     @Override
     @ApiOperation(value = "是否存在")
