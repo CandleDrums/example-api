@@ -10,6 +10,8 @@ package com.cds.api.example.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.cds.base.common.annotaion.NumGenerateRule;
+
 import lombok.Data;
 
 /**
@@ -19,6 +21,7 @@ import lombok.Data;
  * @Date [date]
  */
 @Data
+@NumGenerateRule(prefixCode = "1001", ruleCode = 7)
 public class TableNameVO implements Serializable {
 
     private static final long serialVersionUID = 1L;
