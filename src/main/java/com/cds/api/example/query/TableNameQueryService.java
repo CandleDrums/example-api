@@ -42,14 +42,6 @@ public interface TableNameQueryService extends GeneralQueryService<TableNameVO> 
     static String PREFIX = BASE_PREFIX + "/TableNameQueryService";
 
     @Override
-    @ApiOperation(value = "是否存在")
-    @ApiResponses(value = {@ApiResponse(code = 200, message = "调用成功"), @ApiResponse(code = 201, message = "收到请求"),
-        @ApiResponse(code = 401, message = "权限错误"), @ApiResponse(code = 403, message = "禁止访问"),
-        @ApiResponse(code = 404, message = "地址错误"), @ApiResponse(code = 500, message = "系统错误")})
-    @PostMapping(PREFIX + "/contains")
-    ResponseResult<Boolean> contains(@RequestBody @NotNull TableNameVO tableName);
-
-    @Override
     @ApiOperation(value = "详情")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "调用成功"), @ApiResponse(code = 201, message = "收到请求"),
         @ApiResponse(code = 401, message = "权限错误"), @ApiResponse(code = 403, message = "禁止访问"),
