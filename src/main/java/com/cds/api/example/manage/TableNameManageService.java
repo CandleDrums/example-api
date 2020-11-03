@@ -7,6 +7,9 @@
  */
 package com.cds.api.example.manage;
 
+import java.io.Serializable;
+import java.util.List;
+
 import javax.validation.constraints.NotNull;
 
 import org.springframework.cloud.openfeign.FeignClient;
@@ -16,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cds.api.example.constant.APIConstants;
 import com.cds.api.example.model.TableNameVO;
-import com.cds.base.api.service.general.GeneralManageService;
+import com.cds.base.api.service.BaseManageService;
 import com.cds.base.common.result.ResponseResult;
 
 import io.swagger.annotations.Api;
@@ -32,25 +35,25 @@ import io.swagger.annotations.ApiResponses;
  */
 @Api(value = "[name]管理服务", tags = {"[name]管理"})
 @FeignClient(name = APIConstants.APP_NAME)
-public interface TableNameManageService extends GeneralManageService<TableNameVO> {
+public interface TableNameManageService extends BaseManageService<TableNameVO> {
     // 前缀
     static final String PREFIX = BASE_PREFIX + "/TableNameManageService";
 
     @Override
-    @ApiOperation(value = "删除")
+    @ApiOperation(value = "保存")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "调用成功"), @ApiResponse(code = 201, message = "收到请求"),
         @ApiResponse(code = 401, message = "权限错误"), @ApiResponse(code = 403, message = "禁止访问"),
         @ApiResponse(code = 404, message = "地址错误"), @ApiResponse(code = 500, message = "系统错误")})
-    @PostMapping(PREFIX + "/delete")
-    ResponseResult<Boolean> delete(@RequestParam(value = "num", required = true) @NotNull String num);
+    @PostMapping(PREFIX + "/save")
+    ResponseResult<TableNameVO> save(@RequestBody @NotNull TableNameVO tableName);
 
     @Override
-    @ApiOperation(value = "添加")
+    @ApiOperation(value = "批量保存")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "调用成功"), @ApiResponse(code = 201, message = "收到请求"),
         @ApiResponse(code = 401, message = "权限错误"), @ApiResponse(code = 403, message = "禁止访问"),
         @ApiResponse(code = 404, message = "地址错误"), @ApiResponse(code = 500, message = "系统错误")})
-    @PostMapping(PREFIX + "/add")
-    ResponseResult<TableNameVO> save(@RequestBody @NotNull TableNameVO tableName);
+    @PostMapping(PREFIX + "/saveAll")
+    ResponseResult<Integer> saveAll(@RequestBody @NotNull List<TableNameVO> valueList);
 
     @Override
     @ApiOperation(value = "修改")
@@ -60,4 +63,19 @@ public interface TableNameManageService extends GeneralManageService<TableNameVO
     @PostMapping(PREFIX + "/modify")
     ResponseResult<TableNameVO> modify(@RequestBody @NotNull TableNameVO tableName);
 
+    @Override
+    @ApiOperation(value = "删除")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "调用成功"), @ApiResponse(code = 201, message = "收到请求"),
+        @ApiResponse(code = 401, message = "权限错误"), @ApiResponse(code = 403, message = "禁止访问"),
+        @ApiResponse(code = 404, message = "地址错误"), @ApiResponse(code = 500, message = "系统错误")})
+    @PostMapping(PREFIX + "/delete")
+    ResponseResult<Boolean> delete(@RequestParam(value = "num", required = true) @NotNull Serializable num);
+
+    @Override
+    @ApiOperation(value = "批量删除")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "调用成功"), @ApiResponse(code = 201, message = "收到请求"),
+        @ApiResponse(code = 401, message = "权限错误"), @ApiResponse(code = 403, message = "禁止访问"),
+        @ApiResponse(code = 404, message = "地址错误"), @ApiResponse(code = 500, message = "系统错误")})
+    @PostMapping(PREFIX + "/deleteAll")
+    ResponseResult<Integer> deleteAll(@RequestBody @NotNull List<Serializable> numList);
 }

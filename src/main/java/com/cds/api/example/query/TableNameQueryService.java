@@ -7,6 +7,7 @@
  */
 package com.cds.api.example.query;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.validation.constraints.NotNull;
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cds.api.example.constant.APIConstants;
 import com.cds.api.example.model.TableNameVO;
-import com.cds.base.api.service.general.GeneralQueryService;
+import com.cds.base.api.service.BaseQueryService;
 import com.cds.base.common.page.Page;
 import com.cds.base.common.page.PageResult;
 import com.cds.base.common.result.ResponseResult;
@@ -36,7 +37,7 @@ import io.swagger.annotations.ApiResponses;
  */
 @Api(value = "[name]查询服务", tags = {"[name]查询"})
 @FeignClient(name = APIConstants.APP_NAME)
-public interface TableNameQueryService extends GeneralQueryService<TableNameVO> {
+public interface TableNameQueryService extends BaseQueryService<TableNameVO> {
 
     // 前缀
     static String PREFIX = BASE_PREFIX + "/TableNameQueryService";
@@ -47,7 +48,7 @@ public interface TableNameQueryService extends GeneralQueryService<TableNameVO> 
         @ApiResponse(code = 401, message = "权限错误"), @ApiResponse(code = 403, message = "禁止访问"),
         @ApiResponse(code = 404, message = "地址错误"), @ApiResponse(code = 500, message = "系统错误")})
     @PostMapping(PREFIX + "/detail")
-    ResponseResult<TableNameVO> detail(@RequestParam(value = "num", required = true) String num);
+    ResponseResult<TableNameVO> detail(@RequestParam(value = "num", required = true) Serializable num);
 
     @Override
     @ApiOperation(value = "指定条件查询")
