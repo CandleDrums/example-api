@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cds.api.example.constant.APIConstants;
 import com.cds.api.example.model.TableNameVO;
-import com.cds.base.api.service.GeneralManageService;
+import com.cds.base.api.service.general.GeneralManageService;
 import com.cds.base.common.result.ResponseResult;
 
 import io.swagger.annotations.Api;
@@ -50,7 +50,7 @@ public interface TableNameManageService extends GeneralManageService<TableNameVO
         @ApiResponse(code = 401, message = "权限错误"), @ApiResponse(code = 403, message = "禁止访问"),
         @ApiResponse(code = 404, message = "地址错误"), @ApiResponse(code = 500, message = "系统错误")})
     @PostMapping(PREFIX + "/add")
-    ResponseResult<TableNameVO> add(@RequestBody @NotNull TableNameVO tableName);
+    ResponseResult<TableNameVO> save(@RequestBody @NotNull TableNameVO tableName);
 
     @Override
     @ApiOperation(value = "修改")
