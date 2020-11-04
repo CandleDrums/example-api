@@ -1,7 +1,7 @@
 /**
  * @Project example-server-api
  * @Package com.cds.api.example.model
- * @Class TableNameVO.java
+ * @Class ModelNameVO.java
  * @Date [date]
  * @Copyright [copyright]
  */
@@ -22,7 +22,7 @@ import lombok.Data;
  */
 @Data
 @NumGenerateRule(prefixCode = "1001", ruleCode = 7)
-public class TableNameVO implements Serializable {
+public class ModelNameVO implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private String num;

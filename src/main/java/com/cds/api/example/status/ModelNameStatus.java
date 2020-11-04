@@ -1,7 +1,7 @@
 /**
  * @Project example-api
  * @Package com.cds.api.example.status
- * @Class TableNameStatus.java
+ * @Class ModelNameStatus.java
  * @Date [date]
  * @Copyright [copyright]
  */
@@ -13,7 +13,7 @@ package com.cds.api.example.status;
  * @author [author]
  * @Date [date]
  */
-public enum TableNameStatus {
+public enum ModelNameStatus {
     STATUS("STATUS", "示例状态");
 
     // 值
@@ -21,7 +21,7 @@ public enum TableNameStatus {
     // 义
     private String desc;
 
-    private TableNameStatus(String value, String desc) {
+    private ModelNameStatus(String value, String desc) {
         this.value = value;
         this.desc = desc;
     }

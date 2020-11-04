@@ -1,7 +1,7 @@
 /**
  * @Project example-api
  * @Package com.cds.api.example.type
- * @Class TableNameType.java
+ * @Class ModelNameType.java
  * @Date [date]
  * @Copyright [copyright]
  */
@@ -13,7 +13,7 @@ package com.cds.api.example.type;
  * @author [author]
  * @Date [date]
  */
-public enum TableNameType {
+public enum ModelNameType {
     TYPE("TYPE", "示例类型");
 
     // 值
@@ -21,7 +21,7 @@ public enum TableNameType {
     // 义
     private String desc;
 
-    private TableNameType(String value, String desc) {
+    private ModelNameType(String value, String desc) {
         this.value = value;
         this.desc = desc;
     }
