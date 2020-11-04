@@ -13,9 +13,9 @@ import java.util.List;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cds.api.example.constant.APIConstants;
 import com.cds.api.example.model.TableNameVO;
@@ -68,14 +68,7 @@ public interface TableNameManageService extends BaseManageService<TableNameVO> {
     @ApiResponses(value = {@ApiResponse(code = 200, message = "调用成功"), @ApiResponse(code = 201, message = "收到请求"),
         @ApiResponse(code = 401, message = "权限错误"), @ApiResponse(code = 403, message = "禁止访问"),
         @ApiResponse(code = 404, message = "地址错误"), @ApiResponse(code = 500, message = "系统错误")})
-    @PostMapping(PREFIX + "/delete")
-    ResponseResult<Boolean> delete(@RequestParam(value = "num", required = true) @NotNull Serializable num);
+    @PostMapping(PREFIX + "/delete/{num}")
+    ResponseResult<Boolean> delete(@PathVariable @NotNull Serializable num);
 
-    @Override
-    @ApiOperation(value = "批量删除")
-    @ApiResponses(value = {@ApiResponse(code = 200, message = "调用成功"), @ApiResponse(code = 201, message = "收到请求"),
-        @ApiResponse(code = 401, message = "权限错误"), @ApiResponse(code = 403, message = "禁止访问"),
-        @ApiResponse(code = 404, message = "地址错误"), @ApiResponse(code = 500, message = "系统错误")})
-    @PostMapping(PREFIX + "/deleteAll")
-    ResponseResult<Integer> deleteAll(@RequestBody @NotNull List<Serializable> numList);
 }
