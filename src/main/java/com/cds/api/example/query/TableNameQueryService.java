@@ -56,7 +56,7 @@ public interface TableNameQueryService extends BaseQueryService<TableNameVO> {
         @ApiResponse(code = 401, message = "权限错误"), @ApiResponse(code = 403, message = "禁止访问"),
         @ApiResponse(code = 404, message = "地址错误"), @ApiResponse(code = 500, message = "系统错误")})
     @PostMapping(PREFIX + "/queryAll")
-    ResponseResult<List<TableNameVO>> queryAll(@RequestBody @NotNull TableNameVO tableName);
+    ResponseResult<List<TableNameVO>> queryAll(@RequestBody TableNameVO tableName);
 
     @Override
     @ApiOperation(value = "分页查询")
