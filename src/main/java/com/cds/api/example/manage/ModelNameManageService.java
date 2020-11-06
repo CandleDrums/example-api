@@ -45,7 +45,7 @@ public interface ModelNameManageService extends BaseManageService<ModelNameVO> {
         @ApiResponse(code = 401, message = "权限错误"), @ApiResponse(code = 403, message = "禁止访问"),
         @ApiResponse(code = 404, message = "地址错误"), @ApiResponse(code = 500, message = "系统错误")})
     @PostMapping(PREFIX + "/save")
-    ResponseResult<ModelNameVO> save(@RequestBody @NotNull ModelNameVO tableName);
+    ResponseResult<ModelNameVO> save(@RequestBody @NotNull ModelNameVO modelName);
 
     @Override
     @ApiOperation(value = "批量保存")
@@ -53,7 +53,7 @@ public interface ModelNameManageService extends BaseManageService<ModelNameVO> {
         @ApiResponse(code = 401, message = "权限错误"), @ApiResponse(code = 403, message = "禁止访问"),
         @ApiResponse(code = 404, message = "地址错误"), @ApiResponse(code = 500, message = "系统错误")})
     @PostMapping(PREFIX + "/saveAll")
-    ResponseResult<Integer> saveAll(@RequestBody @NotNull List<ModelNameVO> valueList);
+    ResponseResult<Integer> saveAll(@RequestBody @NotNull List<ModelNameVO> modelNameList);
 
     @Override
     @ApiOperation(value = "修改")
@@ -61,14 +61,14 @@ public interface ModelNameManageService extends BaseManageService<ModelNameVO> {
         @ApiResponse(code = 401, message = "权限错误"), @ApiResponse(code = 403, message = "禁止访问"),
         @ApiResponse(code = 404, message = "地址错误"), @ApiResponse(code = 500, message = "系统错误")})
     @PostMapping(PREFIX + "/modify")
-    ResponseResult<ModelNameVO> modify(@RequestBody @NotNull ModelNameVO tableName);
+    ResponseResult<ModelNameVO> modify(@RequestBody @NotNull ModelNameVO modelName);
 
     @Override
     @ApiOperation(value = "删除")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "调用成功"), @ApiResponse(code = 201, message = "收到请求"),
         @ApiResponse(code = 401, message = "权限错误"), @ApiResponse(code = 403, message = "禁止访问"),
         @ApiResponse(code = 404, message = "地址错误"), @ApiResponse(code = 500, message = "系统错误")})
-    @PostMapping(PREFIX + "/delete/{num}")
-    ResponseResult<Boolean> delete(@PathVariable @NotNull Serializable num);
+    @PostMapping(PREFIX + "/delete/{pk}")
+    ResponseResult<Boolean> delete(@PathVariable @NotNull Serializable pk);
 
 }

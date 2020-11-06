@@ -1,9 +1,9 @@
 /**
  * @Project example-api
  * @Package com.cds.api.example.query
- * @Class ModelNameQueryService.java
- * @Date [date]
- * @Copyright [copyright]
+ * @Class BasicQueryService.java
+ * @Date Nov 5, 2020 6:45:15 PM
+ * @Copyright (c) 2020 CandleDrums.com All Right Reserved.
  */
 package com.cds.api.example.query;
 
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.cds.api.example.constant.APIConstants;
-import com.cds.api.example.model.ModelNameVO;
+import com.cds.api.example.model.BasicVO;
 import com.cds.base.api.service.BaseQueryService;
 import com.cds.base.common.page.Page;
 import com.cds.base.common.page.PageResult;
@@ -30,25 +30,25 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 /**
- * @Description [name]查询服务
+ * @Description TODO 填写描述信息
  * @Notes 未填写备注
- * @author [author]
- * @Date [date]
+ * @author liming
+ * @Date Nov 5, 2020 6:45:15 PM
  */
 @Api(value = "[name]查询服务", tags = {"[name]查询"})
 @FeignClient(name = APIConstants.APP_NAME)
-public interface ModelNameQueryService extends BaseQueryService<ModelNameVO> {
+public interface BasicQueryService extends BaseQueryService<BasicVO> {
 
     // 前缀
-    static String PREFIX = BASE_PREFIX + "/ModelNameQueryService";
+    static String PREFIX = BASE_PREFIX + "/BasicQueryService";
 
     @Override
     @ApiOperation(value = "详情")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "调用成功"), @ApiResponse(code = 201, message = "收到请求"),
         @ApiResponse(code = 401, message = "权限错误"), @ApiResponse(code = 403, message = "禁止访问"),
         @ApiResponse(code = 404, message = "地址错误"), @ApiResponse(code = 500, message = "系统错误")})
-    @PostMapping(PREFIX + "/detail/{pk}")
-    ResponseResult<ModelNameVO> detail(@PathVariable Serializable pk);
+    @PostMapping(PREFIX + "/detail/{id}")
+    ResponseResult<BasicVO> detail(@PathVariable Serializable id);
 
     @Override
     @ApiOperation(value = "指定条件查询")
@@ -56,7 +56,7 @@ public interface ModelNameQueryService extends BaseQueryService<ModelNameVO> {
         @ApiResponse(code = 401, message = "权限错误"), @ApiResponse(code = 403, message = "禁止访问"),
         @ApiResponse(code = 404, message = "地址错误"), @ApiResponse(code = 500, message = "系统错误")})
     @PostMapping(PREFIX + "/queryAll")
-    ResponseResult<List<ModelNameVO>> queryAll(@RequestBody ModelNameVO params);
+    ResponseResult<List<BasicVO>> queryAll(@RequestBody BasicVO tableName);
 
     @Override
     @ApiOperation(value = "分页查询")
@@ -64,6 +64,6 @@ public interface ModelNameQueryService extends BaseQueryService<ModelNameVO> {
         @ApiResponse(code = 401, message = "权限错误"), @ApiResponse(code = 403, message = "禁止访问"),
         @ApiResponse(code = 404, message = "地址错误"), @ApiResponse(code = 500, message = "系统错误")})
     @PostMapping(PREFIX + "/queryPagingList")
-    ResponseResult<PageResult<ModelNameVO>> queryPagingList(@RequestBody @NotNull Page<ModelNameVO> pageParams);
+    ResponseResult<PageResult<BasicVO>> queryPagingList(@RequestBody @NotNull Page<BasicVO> page);
 
 }
