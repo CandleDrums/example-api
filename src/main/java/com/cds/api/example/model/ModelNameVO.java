@@ -21,14 +21,13 @@ import lombok.Data;
  * @Date [date]
  */
 @Data
-@NumGenerateRule(prefixCode = "1001", ruleCode = 7)
+@NumGenerateRule(prefixCode = "自定义前缀", ruleCode = 7)
 public class ModelNameVO implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private String num;
     private Integer version;
-    private String status;
-    private String type;
+    // 动态添加相关属性
     private Date createDate;
     private Date updateDate;
 
