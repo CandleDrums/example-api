@@ -20,7 +20,6 @@ import com.cds.api.example.constant.APIConstants;
 import com.cds.api.example.model.ModelNameVO;
 import com.cds.base.api.service.BaseQueryService;
 import com.cds.base.common.page.Page;
-import com.cds.base.common.page.PageResult;
 import com.cds.base.common.result.ResponseResult;
 
 import io.swagger.annotations.Api;
@@ -71,6 +70,6 @@ public interface ModelNameQueryService extends BaseQueryService<ModelNameVO> {
         @ApiResponse(code = 401, message = "权限错误"), @ApiResponse(code = 403, message = "禁止访问"),
         @ApiResponse(code = 404, message = "地址错误"), @ApiResponse(code = 500, message = "系统错误")})
     @PostMapping(PREFIX + "/list/page")
-    ResponseResult<PageResult<ModelNameVO>> queryPagingList(@RequestBody @NotNull Page<ModelNameVO> pageParams);
+    ResponseResult<Page<ModelNameVO>> queryPagingList(@RequestBody @NotNull Page<ModelNameVO> pageParams);
 
 }
