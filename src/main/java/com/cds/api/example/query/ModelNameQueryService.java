@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.cds.api.example.constant.APIConstants;
 import com.cds.api.example.model.ModelNameVO;
+import com.cds.base.api.fallback.DefaultFallbackFactory;
 import com.cds.base.api.service.BaseQueryService;
 import com.cds.base.common.page.Page;
 import com.cds.base.common.result.ResponseResult;
@@ -34,7 +35,7 @@ import io.swagger.annotations.ApiResponses;
  * @Date [date]
  */
 @Api(value = "[name]查询服务", tags = {"[name]查询"})
-@FeignClient(name = APIConstants.APP_NAME)
+@FeignClient(name = APIConstants.APP_NAME, fallbackFactory = DefaultFallbackFactory.class)
 public interface ModelNameQueryService extends BaseQueryService<ModelNameVO> {
 
     // 前缀
