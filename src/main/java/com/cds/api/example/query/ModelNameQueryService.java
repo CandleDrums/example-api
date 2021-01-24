@@ -15,6 +15,7 @@ import javax.validation.constraints.NotNull;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cds.api.example.constant.APIConstants;
 import com.cds.api.example.model.ModelNameVO;
@@ -46,31 +47,31 @@ public interface ModelNameQueryService extends BaseQueryService<ModelNameVO> {
     @ApiResponses(value = {@ApiResponse(code = 200, message = "调用成功"), @ApiResponse(code = 201, message = "收到请求"),
         @ApiResponse(code = 401, message = "权限错误"), @ApiResponse(code = 403, message = "禁止访问"),
         @ApiResponse(code = 404, message = "地址错误"), @ApiResponse(code = 500, message = "系统错误")})
-    @PostMapping(PREFIX + "/detail/pk")
-    ResponseResult<ModelNameVO> detail(@RequestBody @NotNull Serializable pk);
-
-    @Override
-    @ApiOperation(value = "详情")
-    @ApiResponses(value = {@ApiResponse(code = 200, message = "调用成功"), @ApiResponse(code = 201, message = "收到请求"),
-        @ApiResponse(code = 401, message = "权限错误"), @ApiResponse(code = 403, message = "禁止访问"),
-        @ApiResponse(code = 404, message = "地址错误"), @ApiResponse(code = 500, message = "系统错误")})
-    @PostMapping(PREFIX + "/detail/param")
-    ResponseResult<ModelNameVO> detail(@RequestBody @NotNull ModelNameVO params);
+    @PostMapping(PREFIX + "/detail")
+    ResponseResult<ModelNameVO> detail(@RequestParam("pk") @NotNull Serializable pk);
 
     @Override
     @ApiOperation(value = "指定条件查询")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "调用成功"), @ApiResponse(code = 201, message = "收到请求"),
         @ApiResponse(code = 401, message = "权限错误"), @ApiResponse(code = 403, message = "禁止访问"),
         @ApiResponse(code = 404, message = "地址错误"), @ApiResponse(code = 500, message = "系统错误")})
-    @PostMapping(PREFIX + "/list")
-    ResponseResult<List<ModelNameVO>> queryAll(@RequestBody ModelNameVO params);
+    @PostMapping(PREFIX + "/query")
+    ResponseResult<List<ModelNameVO>> query(@RequestBody ModelNameVO params);
+
+    @Override
+    @ApiOperation(value = "详情")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "调用成功"), @ApiResponse(code = 201, message = "收到请求"),
+        @ApiResponse(code = 401, message = "权限错误"), @ApiResponse(code = 403, message = "禁止访问"),
+        @ApiResponse(code = 404, message = "地址错误"), @ApiResponse(code = 500, message = "系统错误")})
+    @PostMapping(PREFIX + "/query/unique")
+    ResponseResult<ModelNameVO> queryUnique(@RequestBody @NotNull ModelNameVO params);
 
     @Override
     @ApiOperation(value = "分页查询")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "调用成功"), @ApiResponse(code = 201, message = "收到请求"),
         @ApiResponse(code = 401, message = "权限错误"), @ApiResponse(code = 403, message = "禁止访问"),
         @ApiResponse(code = 404, message = "地址错误"), @ApiResponse(code = 500, message = "系统错误")})
-    @PostMapping(PREFIX + "/list/page")
-    ResponseResult<Page<ModelNameVO>> queryPagingList(@RequestBody @NotNull Page<ModelNameVO> pageParams);
+    @PostMapping(PREFIX + "/query/page")
+    ResponseResult<Page<ModelNameVO>> queryPage(@RequestBody @NotNull Page<ModelNameVO> pageParams);
 
 }
