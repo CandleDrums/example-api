@@ -18,8 +18,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cds.api.example.constant.APIConstants;
+import com.cds.api.example.fallback.ModelNameQueryServiceFallback;
 import com.cds.api.example.model.ModelNameVO;
-import com.cds.base.api.fallback.DefaultFallbackFactory;
+import com.cds.base.api.config.FeignConfig;
 import com.cds.base.api.service.BaseQueryService;
 import com.cds.base.common.page.Page;
 import com.cds.base.common.result.ResponseResult;
@@ -36,7 +37,8 @@ import io.swagger.annotations.ApiResponses;
  * @Date [date]
  */
 @Api(value = "[name]查询服务", tags = {"[name]查询"})
-@FeignClient(name = APIConstants.APP_NAME, fallbackFactory = DefaultFallbackFactory.class)
+@FeignClient(name = APIConstants.APP_NAME, configuration = FeignConfig.class,
+    fallbackFactory = ModelNameQueryServiceFallback.class)
 public interface ModelNameQueryService extends BaseQueryService<ModelNameVO> {
 
     // 前缀
@@ -51,7 +53,7 @@ public interface ModelNameQueryService extends BaseQueryService<ModelNameVO> {
     ResponseResult<ModelNameVO> detail(@RequestParam("pk") @NotNull Serializable pk);
 
     @Override
-    @ApiOperation(value = "指定条件查询")
+    @ApiOperation(value = "条件查询")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "调用成功"), @ApiResponse(code = 201, message = "收到请求"),
         @ApiResponse(code = 401, message = "权限错误"), @ApiResponse(code = 403, message = "禁止访问"),
         @ApiResponse(code = 404, message = "地址错误"), @ApiResponse(code = 500, message = "系统错误")})
@@ -59,7 +61,7 @@ public interface ModelNameQueryService extends BaseQueryService<ModelNameVO> {
     ResponseResult<List<ModelNameVO>> query(@RequestBody ModelNameVO params);
 
     @Override
-    @ApiOperation(value = "详情")
+    @ApiOperation(value = "唯一查询")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "调用成功"), @ApiResponse(code = 201, message = "收到请求"),
         @ApiResponse(code = 401, message = "权限错误"), @ApiResponse(code = 403, message = "禁止访问"),
         @ApiResponse(code = 404, message = "地址错误"), @ApiResponse(code = 500, message = "系统错误")})

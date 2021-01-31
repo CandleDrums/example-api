@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.cds.api.example.constant.APIConstants;
+import com.cds.api.example.fallback.ModelNameManageServiceFallback;
 import com.cds.api.example.model.ModelNameVO;
+import com.cds.base.api.config.FeignConfig;
 import com.cds.base.api.service.BaseManageService;
 import com.cds.base.common.result.ResponseResult;
 
@@ -34,7 +36,8 @@ import io.swagger.annotations.ApiResponses;
  * @Date [date]
  */
 @Api(value = "[name]管理服务", tags = {"[name]管理"})
-@FeignClient(name = APIConstants.APP_NAME)
+@FeignClient(name = APIConstants.APP_NAME, configuration = FeignConfig.class,
+    fallbackFactory = ModelNameManageServiceFallback.class)
 public interface ModelNameManageService extends BaseManageService<ModelNameVO> {
     // 前缀
     static final String PREFIX = BASE_PREFIX + "/ModelNameManageService";
