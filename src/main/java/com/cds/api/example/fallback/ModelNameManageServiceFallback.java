@@ -12,6 +12,7 @@ import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
+import org.springframework.cloud.openfeign.FallbackFactory;
 import org.springframework.stereotype.Component;
 
 import com.cds.api.example.manage.ModelNameManageService;
@@ -19,7 +20,6 @@ import com.cds.api.example.model.ModelNameVO;
 import com.cds.base.api.AbstractFallbackFactory;
 import com.cds.base.common.result.ResponseResult;
 
-import feign.hystrix.FallbackFactory;
 import lombok.extern.slf4j.Slf4j;
 
 /**
