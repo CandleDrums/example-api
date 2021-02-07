@@ -15,5 +15,5 @@ package com.cds.api.example.constant;
  */
 public class APIConstants {
     public static final String APP_NAME = "example-server";
-
+    public static final String CACHE_PREFIX = "[example_server]";
 }
