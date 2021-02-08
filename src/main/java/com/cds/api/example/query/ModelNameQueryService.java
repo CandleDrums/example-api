@@ -12,7 +12,6 @@ import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -51,7 +50,6 @@ public interface ModelNameQueryService extends BaseQueryService<ModelNameVO> {
         @ApiResponse(code = 401, message = "权限错误"), @ApiResponse(code = 403, message = "禁止访问"),
         @ApiResponse(code = 404, message = "地址错误"), @ApiResponse(code = 500, message = "系统错误")})
     @PostMapping(PREFIX + "/detail")
-    @Cacheable(value = APIConstants.CACHE_PREFIX + "::(detail)::{pk}", key = "#pk")
     ResponseResult<ModelNameVO> detail(@RequestParam("pk") @NotNull Serializable pk);
 
     @Override
